@@ -1,0 +1,138 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Roboto-Regular;
+  min-height: 100vh;
+  background: #fffeed;
+  .converter-wrap {
+    background: #ebebeb;
+    margin-top: 50px;
+    border-radius: 5px;
+
+    .refresh {
+      cursor: pointer;
+      border: none;
+      outline: none;
+      background: inherit;
+      font-size: 25px;
+
+      span.loading {
+        display: block;
+        animation: spin 2s linear infinite;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    }
+    .converter-footer {
+      display: flex;
+
+      &>div {
+        width: 83%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h3 {
+          margin: 0;
+          font-weight:500;
+          font-size: 16px
+        }
+      }
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 20px;
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        // margin: 20px 0px;
+        padding: 20px 10px;
+        border-bottom: 1px solid black;
+
+        &:hover {
+          background: #a6d5a9;
+        }
+
+        .currency {
+          i {
+            margin-left: 5px;
+            font-size: 15px;
+            color: grey;
+          }
+        }
+        input {
+          border: none;
+          outline: none;
+          background: inherit;
+          font-size: 20px;
+          cursor: pointer;
+          text-align: right;
+          margin-right: 30px;
+        }
+      }
+    }
+  }
+
+  .historical-wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .date-wrap {
+      display: flex;
+      flex-direction: column;
+      max-width: 300px;
+      margin-top: 50px;
+      background: #ebebeb;
+      min-width: 322px;
+      border-radius: 5px;
+      h1 {
+        text-align: center;
+      }
+      .react-datepicker-wrapper {
+        width: 100%;
+      }
+      input {
+        width: 93.5%;
+        border: none;
+        border-bottom: 1px solid black;
+        background: inherit;
+        padding: 0 10px;
+      }
+      input, .submit {
+        margin-top: 20px;
+        height: 30px;
+        font-size: 20px;
+        font-family: Roboto-Regular;
+        outline: none;
+
+      }
+      .submit {
+        cursor: pointer;
+        border: none;
+        background: inherit;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
