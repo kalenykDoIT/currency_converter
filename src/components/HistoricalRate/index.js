@@ -23,13 +23,10 @@ const options = {
     scales: {
       yAxes: [
         {
-          tics: { min: 0 }
-        },
-        {
             scaleLabel: {
               display: true,
               labelString: 'Ratio to base currency'
-            }
+            },
         }
       ],
       xAxes: [{
