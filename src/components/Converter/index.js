@@ -11,12 +11,11 @@ export const Converter = () => {
     const rates = useSelector(state => state.rates.currentRate.rates);
     const baseCurrency = useSelector(state => state.rates.currentRate.base);
     const lastUpdate = useSelector(state => state.rates.lastCurrentRateUpdate);
-    const isRatesLoading = useSelector(state => state.rates.isCurrentRateLoading);//Rates load too fast. spinner not needed
 
-    const [eur, setEur] = useState(null);
-    const [gbp, setGbp] = useState(null);
-    const [usd, setUsd] = useState(null);
-    const [sgd, setSgd] = useState(null);
+    const [eur, setEur] = useState('');
+    const [gbp, setGbp] = useState('');
+    const [usd, setUsd] = useState('');
+    const [sgd, setSgd] = useState('');
 
     const mapCurrencyNameToHandler = {
         EUR: setEur,
@@ -33,7 +32,7 @@ export const Converter = () => {
         if(!lastUpdate || !isRateUpdatedToday) {
             dispatch(getCurrencyRate());
         }
-    },[])
+    },[lastUpdate, dispatch])
     
 
     const handleRefresh = () => {
@@ -96,7 +95,7 @@ export const Converter = () => {
             <ul>
                 {
                     currenciesList.map(currency => (
-                        <li>
+                        <li key={currency.name}>
                             <div className="currency">
                                 {currency.name}
                                 {currency.icon}

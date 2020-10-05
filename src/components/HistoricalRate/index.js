@@ -117,7 +117,6 @@ export const HistoricalRate = () => {
         labels: historicalRate[dateRangeKey] ? Object.keys(historicalRate[dateRangeKey]).sort((a,b) => moment(a).diff(b)) : [],
         datasets
     }
-    console.log('datasets',datasets)
     return (
         <div className="historical-wrap">
             <div className="date-wrap">
@@ -142,7 +141,6 @@ export const HistoricalRate = () => {
             
             { datasets.every(dataset => dataset.data.length) && (
                 <>
-                    <h3></h3>
                     <Line
                         data={data}
                         options={options}
