@@ -101,9 +101,6 @@ export const HistoricalRate = () => {
         .filter(currency => currency !== baseCurrency)
         .map(currency => {
             const sorted = {};
-            console.log('historicalRate',historicalRate)
-            console.log('historicalRate[dateRangeKey]',historicalRate[dateRangeKey]);
-            console.log('historicalRate[dateRangeKey])',historicalRate[dateRangeKey])
             if(!historicalRate[dateRangeKey] || !Object.keys(historicalRate[dateRangeKey]).length ) {
                 return {
                     ...datasetOptions,
