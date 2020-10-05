@@ -6,9 +6,9 @@ import { HistoricalRate } from './HistoricalRate';
 export default function App() {
 
   return (
-    <div className="App">
-      <Converter/>
-      <HistoricalRate/>
-    </div>
+      <div className="App">
+          <Converter/>
+          <HistoricalRate/>
+      </div>
   );
 }

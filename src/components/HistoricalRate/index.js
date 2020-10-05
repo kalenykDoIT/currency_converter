@@ -101,7 +101,18 @@ export const HistoricalRate = () => {
         .filter(currency => currency !== baseCurrency)
         .map(currency => {
             const sorted = {};
-            historicalRate[dateRangeKey] && Object.keys(historicalRate[dateRangeKey])
+            console.log('historicalRate',historicalRate)
+            console.log('historicalRate[dateRangeKey]',historicalRate[dateRangeKey]);
+            console.log('historicalRate[dateRangeKey])',historicalRate[dateRangeKey])
+            if(!historicalRate[dateRangeKey] || !Object.keys(historicalRate[dateRangeKey]).length ) {
+                return {
+                    ...datasetOptions,
+                    ...mapStylesToDateset[currency],
+                    label: `${currency} to ${baseCurrency} ratio`,
+                    data: [],
+                }
+            }
+            Object.keys(historicalRate[dateRangeKey])
                 .sort((a,b) => moment(a).diff(b))
                 .forEach(key => {
                     sorted[key] = historicalRate[dateRangeKey][key]
@@ -136,6 +147,7 @@ export const HistoricalRate = () => {
                     placeholderText={'End date'}
                     popperPlacement={'right'}
                 />
+                {historicalRate[dateRangeKey] && (datasets.every(dataset => dataset.data.length === 0)) && <span className='error'>No data for these period</span>}
                 <button onClick={handleSubmit} className='submit'>Get historical rate</button>
             </div>
             
